@@ -1,0 +1,56 @@
+{% extends 'senior_data/base.html' %}
+{% block title %} Senior Detail Page {% endblock %}
+
+
+
+{% block content %}
+<body style="background-color: rgb(237, 239, 242);">
+<br><br>
+
+<div class="container mt-4">
+    <h2 style="text-align: center;">Details Page</h2><br>
+    <span>
+        <img class="img-fluid mt-4" src="{{ senior_detail.image.url }}" alt="card image cap" style="width: 10em; border-radius: 6em; height: 10em; margin-left: 30em;"/><br><br>
+        <b>Full Name:</b> {{ senior_detail.full_name }}<hr>
+        <b>Gender:</b> {{ senior_detail.gender }}<hr>
+        <b>Date of Birth:</b> {{ senior_detail.dob }}<hr>
+        <b>Address:</b> {{ senior_detail.address }}<hr>
+        <b>Phone:</b> {{ senior_detail.phone }}<hr>
+    </span>
+    <button class="btn btn-light"  style="margin-left: 7.5em; width:18%;"><a href="{% url 'index' %}" style="text-decoration: none;" class="link">Go Home</a></button>
+    <form method="POST" action="{% url 'delete_senior' senior_detail.pk %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="button" onclick="showDeleteModal();" class="btn btn-danger">Delete Senior</button>
+    </form>
+    
+    <!-- Custom Confirmation Modal -->
+    <div id="deleteModal" style="display:none; position:relative; top:0; left:0; width:40%; height:30%; margin-left: 25%; border-radius: 15px; background-color:rgb(49, 82, 92); color:white; text-align:center; padding:20px; z-index:1000;">
+        <h2>Attention Please!</h2>
+        <p>Are you sure you want to delete this senior?</p>
+        <form method="POST" action="{% url 'delete_senior' senior_detail.pk %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            <button type="button" onclick="hideDeleteModal();" class="btn btn-secondary">Cancel</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+function showDeleteModal() {
+    document.getElementById('deleteModal').style.display = 'block';
+}
+
+function hideDeleteModal() {
+    document.getElementById('deleteModal').style.display = 'none';
+}
+</script>
+
+
+<br><br><br><br>
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+
+</body>
+{% endblock %}
+

@@ -1,0 +1,27 @@
+{% extends 'senior_data/base.html' %}
+<title>{% block title %}User Login{% endblock %}</title>
+
+{% block content %}
+<br>
+    <br>
+<body style="background-color: rgb(239, 246, 243);">
+<h2 style="margin-left: 17.5em; font-family: sans-serif;">User Login Page</h2><hr>
+
+<br><br>
+<form method="POST" action="" style="margin-left: 30em">
+  {% csrf_token %}
+  <div class="login">
+    {{ form.username.label }}<br>
+    <h2>{{ form.username }}</h2>
+    {{ form.password.label }}<br>
+    <h2>{{ form.password }}</h2>
+    {{ forms.errors }}
+    <h3><input type="submit" style="width: 42.6%; padding: 0.5em; font-family: tahoma; border-radius: 0.2em; background-color: green; color: white; border: none;" value="Log In"/></h3>
+    {{ messages.errors }}
+  </div>
+  
+</form>
+    
+{% endblock %}
+
+

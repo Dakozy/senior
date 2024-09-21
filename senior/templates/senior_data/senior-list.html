@@ -1,0 +1,48 @@
+{% extends 'senior_data/base.html' %}
+
+{% block title %}Index - Page{% endblock %}
+
+
+{% block content %}
+
+<br>
+<br>
+
+<form method="POST" action="{% url 'searched' %}" class="d-flex mb-4">
+    {% csrf_token %}
+    <input class="form-control me-2" type="search" style="width: 50%; margin-left: 18em;" name="searched" placeholder="Search beneficaries..." aria-label="Search">
+    <button class="btn btn-outline-primary" type="submit">Search</button>
+</form>
+<br><br>
+
+<button class="container" style="background-color: rgb(67, 145, 246);  border: none; border-radius:10px; font-size: 1em; margin-left: 40%; width: 20%; padding: 1em;"><a href="{% url 'add_senior' %}" style="text-decoration: none; color: white; font-weight: bolder;">Add Senior</a></button>
+<br>
+
+<div class="container mt-4">
+    <div class="row">
+        {% for senior in object_list %}
+            <div class="col-md-4" style="background-color: rgb(218, 233, 244);">
+                <div class="card mb-4" style="background-color: rgb(235, 242, 247);">                 
+                    <h6 class="card-header text-danger" style="background-color: rgb(150, 207, 246);">OBLBF Beneficiary - <span class="container text-secondary">added by {{ senior.user }} </span></h6>
+                    <img class="img-fluid mt-4" src="{{ senior.image.url }}" alt="card image cap" style="width: 6em; height: 6em; margin-left: 4em;"/>
+                    <div class="card-body">
+                        <h4 class="">{{ senior.full_name }}</h4>
+                        <p class="card-text">Updated on {{ senior.updated }} </p>
+                        <a href="{% url 'senior-detail' slug=senior.slug %}" class="btn btn-primary" style="background-color: black; color: white;">View Details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+
+{% endblock %}
+<a href="{{ senior_data.get_absolute_url }}" style="text-decoration: none; color: green">{{ senior.full_name }}</a>
+
+
+

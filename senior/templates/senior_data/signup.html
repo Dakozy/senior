@@ -1,0 +1,35 @@
+{% extends 'senior_data/base.html' %}
+
+{% block content %}
+
+<br>
+<body style="background-color: rgb(239, 246, 243);">
+<h2 style="margin-left: 16.5em; font-family: sans-serif;">User Registration Page</h2><hr>
+
+<br><br>
+<form method="POST" action="" style="margin-left: 30em">
+  {% csrf_token %}
+  <div class="signup">
+    {{ form.email.label }}<br>
+    <h2>{{ form.email }}</h2>
+    {{ form.username.label }}<br>
+    <h2>{{ form.username }}</h2>
+    {{ form.password1.label }}<br>
+    <h2>{{ form.password1 }}</h2>
+    {{ form.password2.label }}<br>
+    <h2>{{ form.password2 }}</h2>
+    {{ forms.errors }}
+    <h3><input type="submit" style="width: 42.6%; padding: 0.5em; font-family: tahoma; border-radius: 0.2em; background-color: green; color: white; border: none;" value="Register Now"/></h3>
+    {{ messages.errors }}
+  </div>
+  
+</form>
+
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+</body>
+{% endblock %}

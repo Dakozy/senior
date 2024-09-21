@@ -1,0 +1,31 @@
+{% extends 'senior_data/base.html' %}
+
+{% block title %}Search Results - Page{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container pt-4 m-4">
+<div class="container-fluid" style="border: 1px solid blue; width: 40%; padding: 2em; border-radius: 2em">
+    {% if searched %}
+        {% for senior in seniors %}
+            {% if searched in senior.full_name %}
+                <h4 class="container">The name "{{ searched }}" matched {{ senior.full_name }}.</h4><br>
+            {% elif searched not in senior.full_name %}
+                <h4 style="margin-left: 0.6em;"><strong><i style="color:green">{{ searched }} does not exist.</i></strong></h4> 
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <h4 class="container">You forgot to searched for beneficaries</h4>
+    {% endif %}
+</div>
+<br><br>
+<button class="btn btn-outline-primary" style="margin-left: 45%; width: 10%"><a href="{% url 'index' %}" style="text-decoration: none;" class="link">Go Home</a></button>
+</div>
+
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+
+{% endblock %}

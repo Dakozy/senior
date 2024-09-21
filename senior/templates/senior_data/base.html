@@ -1,0 +1,48 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Base - Page{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'index' %}"><b style="color: greenyellow"><img src="{% static 'img/oblbf_logo.png' %}" style="width: 45px; height: 40px; border-radius: 2em;">&nbsp &nbsp O. B. Lulu Briggs Foundation</b></a>
+            {% if request.user.is_authenticated %}
+              <b><a href="{% url 'logout' %}" style="text-decoration: none; color: white">Logout</a></b>
+            {% else %}
+              <b><a href="{% url 'signup' %}" style="text-decoration: none; color: white">Register</a></b>
+              <b><a href="{% url 'login' %}" style="text-decoration: none; color: white">Login</a></b>
+            {% endif %}
+
+          </b>      
+          <div  style="margin-right: 10%;">
+            <ul>
+              <li>
+                {% if user.is_authenticated %}
+                  <i class="user" style="color: silver;">Welcome, <strong  style="color:rgb(234, 221, 212);">{{ user.username }}</strong></i>
+                {% endif %}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+      {% block content %}
+
+      {% endblock %}
+
+      <nav class="navbar fixed-bottom text-dark bg-secondary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" style="color: white; margin-left: 10em; margin-top: 1em; margin-bottom: 3em; text-align:center;">&copy All rights reserved. O. B. Lulu Briggs Foundation Senior Citizen Profiles 2024. Developed by <strong>Gabito Resources.</strong></a>
+        </div>
+      </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>

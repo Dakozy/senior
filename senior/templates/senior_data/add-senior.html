@@ -1,0 +1,52 @@
+{% extends 'senior_data/base.html' %}
+
+
+<title>{% block title %}Add Senior{% endblock %}</title>
+
+{% block content %}
+<body style="background-color: rgb(239, 246, 243);"></body>
+<h1 style="text-align: center; padding: 1em;">Add Senior Citizen</h1>
+<br>
+
+  <br>
+ 
+<div> 
+  <form method="post" enctype="multipart/form-data" style="margin-left: 25em;">
+    {% csrf_token %}
+    <h3>{{ form.image.label }}</h3>
+    <h2>{{ form.image }}</h2>
+    <h3>{{ form.user.label }}</h3>
+    <h2>{{ form.user }}</h2>
+    <h3>{{ form.full_name.label }}</h3>
+    <h2>{{ form.full_name }}</h2>
+    <h3>{{ form.gender.label }}</h3>
+    <h2>{{ form.gender }}</h2>
+    <h3>{{ form.dob.label }}</h3>
+    <h2>{{ form.dob }}</h2>
+    <h3>{{ form.address.label }}</h3>
+    <h2>{{ form.address }}</h2>
+    <h3>{{ form.phone.label }}</h3>
+    <h2>{{ form.phone }}</h2>
+    <h3>{{ form.slug.label }}</h3>
+    <h2>{{ form.slug }}</h2>
+    <div class="form-actions" style="margin-top: 20px;">
+      <button type="submit" class="form-button" style="padding: 10px 20px; font-size: 16px; color: white; background-color: #17701c; border: none; border-radius: 5px; cursor: pointer;">Register Senior</button>
+      <a href="{% url 'list' %}" class="form-button" style="padding: 12px 20px; font-size: 16px; color: white; background-color: #255692; border: none; border-radius: 5px; cursor: pointer; text-decoration: none;">Cancel Action</a>
+    </div>
+  </div>  
+  </form>
+  <br><br>
+  <br><br>
+  
+</div>
+<div class="form-container" style="max-width: 1000px; margin: 0 auto;">
+  <div class="container">
+    <h3>Go <a href="{% url 'index' %}" style="text-decoration: none;">Home</a></h3>
+  </div>
+</div>
+<br><br>
+<br><br>
+
+</body>
+{% endblock %}
+
